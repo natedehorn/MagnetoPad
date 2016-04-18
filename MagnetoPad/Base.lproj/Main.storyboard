@@ -49,14 +49,6 @@
                                                 </textField>
                                             </barButtonItem>
                                         </leftBarButtonItems>
-                                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YSo-uw-qNq">
-                                            <rect key="frame" x="172" y="27" width="32" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Hide"/>
-                                            <connections>
-                                                <action selector="hideNavBar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N8m-SF-lZp"/>
-                                            </connections>
-                                        </button>
                                         <rightBarButtonItems>
                                             <barButtonItem systemItem="compose" id="fXy-a4-BNS">
                                                 <connections>
@@ -80,6 +72,26 @@
                                                     <state key="normal" title="Save"/>
                                                     <connections>
                                                         <action selector="savePoint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HwO-Rx-UaX"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="442-aS-AFy">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ahV-5O-0Te">
+                                                    <rect key="frame" x="199" y="27" width="32" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Stop"/>
+                                                    <connections>
+                                                        <action selector="stopDrawing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wCT-Ul-qPg"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="egQ-vb-aiV">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NVx-Hq-Mem">
+                                                    <rect key="frame" x="157" y="27" width="34" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Start"/>
+                                                    <connections>
+                                                        <action selector="startDrawing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1n-Jy-pS7"/>
                                                     </connections>
                                                 </button>
                                             </barButtonItem>
