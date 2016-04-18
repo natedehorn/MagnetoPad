@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MagnetoPad" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2ve-fx-wo7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9O-RP-JOV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Jsb-5s-9og"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="6XN-xE-jjW">
+                                        <nil key="title"/>
+                                        <leftBarButtonItems>
+                                            <barButtonItem systemItem="refresh" id="fhR-TN-T6Q">
+                                                <connections>
+                                                    <action selector="undoDrawing:" destination="BYZ-38-t0r" id="fNd-vL-FfY"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="Mgz-1e-sDE">
+                                                <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="q6x-Wz-2Pb">
+                                                    <rect key="frame" x="53" y="27" width="43" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="FtE-WU-gv9">
+                                                <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="V4d-bl-Yol">
+                                                    <rect key="frame" x="104" y="27" width="43" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YSo-uw-qNq">
+                                            <rect key="frame" x="172" y="27" width="32" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Hide"/>
+                                            <connections>
+                                                <action selector="hideNavBar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N8m-SF-lZp"/>
+                                            </connections>
+                                        </button>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="compose" id="fXy-a4-BNS">
+                                                <connections>
+                                                    <action selector="saveImage:" destination="BYZ-38-t0r" id="RvG-fJ-lwb"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="foh-ok-kAS">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I5J-Xd-Js8">
+                                                    <rect key="frame" x="281" y="27" width="36" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Draw"/>
+                                                    <connections>
+                                                        <action selector="draw:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vXX-RX-mbK"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="lUc-6Y-t4c">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VfC-XO-1SY">
+                                                    <rect key="frame" x="239" y="27" width="34" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Save"/>
+                                                    <connections>
+                                                        <action selector="savePoint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HwO-Rx-UaX"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jdM-uC-Lw6">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K9O-RP-JOV" firstAttribute="top" secondItem="2ve-fx-wo7" secondAttribute="top" id="9RV-dC-gfw"/>
+                            <constraint firstAttribute="trailing" secondItem="K9O-RP-JOV" secondAttribute="trailing" id="NmA-YX-fdR"/>
+                            <constraint firstItem="jdM-uC-Lw6" firstAttribute="top" secondItem="K9O-RP-JOV" secondAttribute="bottom" id="T66-rY-8J0"/>
+                            <constraint firstAttribute="trailing" secondItem="jdM-uC-Lw6" secondAttribute="trailing" id="Wn0-vw-ik2"/>
+                            <constraint firstItem="K9O-RP-JOV" firstAttribute="leading" secondItem="2ve-fx-wo7" secondAttribute="leading" id="oCu-ku-i0V"/>
+                            <constraint firstItem="jdM-uC-Lw6" firstAttribute="leading" secondItem="2ve-fx-wo7" secondAttribute="leading" id="zVc-0d-GI9"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="jdM-uC-Lw6" id="jE9-i9-sat"/>
+                        <outlet property="navBar" destination="K9O-RP-JOV" id="yOf-2g-rYY"/>
+                        <outlet property="xval" destination="q6x-Wz-2Pb" id="qpC-l8-ROf"/>
+                        <outlet property="yval" destination="V4d-bl-Yol" id="CwY-Hf-iYj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="403.5" y="185.5"/>
+        </scene>
+    </scenes>
+</document>
