@@ -32,21 +32,15 @@
                                                     <action selector="undoDrawing:" destination="BYZ-38-t0r" id="fNd-vL-FfY"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem style="plain" id="Mgz-1e-sDE">
-                                                <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="q6x-Wz-2Pb">
-                                                    <rect key="frame" x="53" y="27" width="43" height="30"/>
+                                            <barButtonItem style="plain" id="egQ-vb-aiV">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NVx-Hq-Mem">
+                                                    <rect key="frame" x="53" y="27" width="34" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" id="FtE-WU-gv9">
-                                                <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="V4d-bl-Yol">
-                                                    <rect key="frame" x="104" y="27" width="43" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <state key="normal" title="Start"/>
+                                                    <connections>
+                                                        <action selector="startDrawing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1n-Jy-pS7"/>
+                                                    </connections>
+                                                </button>
                                             </barButtonItem>
                                         </leftBarButtonItems>
                                         <rightBarButtonItems>
@@ -55,43 +49,13 @@
                                                     <action selector="saveImage:" destination="BYZ-38-t0r" id="RvG-fJ-lwb"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem style="plain" id="foh-ok-kAS">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I5J-Xd-Js8">
-                                                    <rect key="frame" x="281" y="27" width="36" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Draw"/>
-                                                    <connections>
-                                                        <action selector="draw:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vXX-RX-mbK"/>
-                                                    </connections>
-                                                </button>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" id="lUc-6Y-t4c">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VfC-XO-1SY">
-                                                    <rect key="frame" x="239" y="27" width="34" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Save"/>
-                                                    <connections>
-                                                        <action selector="savePoint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HwO-Rx-UaX"/>
-                                                    </connections>
-                                                </button>
-                                            </barButtonItem>
                                             <barButtonItem style="plain" id="442-aS-AFy">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ahV-5O-0Te">
-                                                    <rect key="frame" x="199" y="27" width="32" height="30"/>
+                                                    <rect key="frame" x="285" y="27" width="32" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Stop"/>
                                                     <connections>
                                                         <action selector="stopDrawing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wCT-Ul-qPg"/>
-                                                    </connections>
-                                                </button>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" id="egQ-vb-aiV">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NVx-Hq-Mem">
-                                                    <rect key="frame" x="157" y="27" width="34" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Start"/>
-                                                    <connections>
-                                                        <action selector="startDrawing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1n-Jy-pS7"/>
                                                     </connections>
                                                 </button>
                                             </barButtonItem>
@@ -117,8 +81,6 @@
                     <connections>
                         <outlet property="imageView" destination="jdM-uC-Lw6" id="jE9-i9-sat"/>
                         <outlet property="navBar" destination="K9O-RP-JOV" id="yOf-2g-rYY"/>
-                        <outlet property="xval" destination="q6x-Wz-2Pb" id="qpC-l8-ROf"/>
-                        <outlet property="yval" destination="V4d-bl-Yol" id="CwY-Hf-iYj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

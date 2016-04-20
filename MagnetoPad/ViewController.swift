@@ -13,24 +13,10 @@ class ViewController: UIViewController {
     
     var lastPoint:CGPoint!
     var currentPoint:CGPoint!
-    
-    var isSwiping:Bool!
     var drawing = false
-    var red:CGFloat!
-    var green:CGFloat!
-    var blue:CGFloat!
-
-    var xmag:Double!
-    var ymag:Double!
-    var xstart:Double!
-    var ystart:Double!
-    var xnext:Int!
-    var ynext:Int!
-    
-    let manager = CMMotionManager()
-    
-    @IBOutlet weak var xval: UITextField!
-    @IBOutlet weak var yval: UITextField!
+    var red:CGFloat! = 0.0
+    var green:CGFloat! = 0.0
+    var blue:CGFloat! = 0.0
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -41,81 +27,64 @@ class ViewController: UIViewController {
     @IBAction func saveImage(sender: AnyObject) {
     }
     
-    @IBAction func draw(sender: AnyObject) {
-        let xxx = Int(self.xval.text!)!
-        let yyy = Int(self.yval.text!)!
-        currentPoint = CGPoint(x: xxx, y: yyy)
-        drawBetweenPoints(lastPoint, end:currentPoint)
-        print(currentPoint)
-    
-        lastPoint = currentPoint
-        xval.endEditing(true)
-        yval.endEditing(true)
-    }
-
-    @IBAction func savePoint(sender: AnyObject) {
-        let x = Int(self.xval.text!)!
-        let y = Int(self.yval.text!)!
-        lastPoint = CGPoint(x: x, y: y)
-    }
-    
     @IBAction func startDrawing(sender: AnyObject) {
         drawing = true
+        startTimer()
     }
     
     @IBAction func stopDrawing(sender: AnyObject) {
         drawing = false
     }
     
-    func drawBetweenPoints(start:CGPoint, end:CGPoint){
-        UIGraphicsBeginImageContext(self.imageView.frame.size)
-        self.imageView.image?.drawInRect(CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height))
-        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), start.x, start.y)
-        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), end.x, end.y)
-        CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 2.0)
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(),red, green, blue, 1.0)
-        CGContextStrokePath(UIGraphicsGetCurrentContext())
-        CGContextSetLineCap(UIGraphicsGetCurrentContext(), CGLineCap.Round)
-        self.imageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+    func startTimer() {
+       // var timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("drawBetweenPoints(lastPoint, endPoint: currentPoint)"), userInfo: nil, repeats: true)
+        drawing = true
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func drawBetweenPoints(startPoint:CGPoint, endPoint:CGPoint) {
+        print("function called.")
+        UIGraphicsBeginImageContext(self.imageView.frame.size)
+        let context = UIGraphicsGetCurrentContext()
+        self.imageView.image?.drawInRect(CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height))
+        CGContextMoveToPoint(context, startPoint.x, startPoint.y)
+        CGContextAddLineToPoint(context, endPoint.x, endPoint.y)
+        CGContextSetLineCap(context, .Round)
+        CGContextSetLineWidth(context, 1.0)
+        CGContextSetRGBStrokeColor(context, red, green, blue, 1.0)
+        CGContextStrokePath(context)
+        CGContextDrawPath(context, .FillStroke)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.imageView.image = img
+    }
+    
+    func gatherMagnetometerValues() {
         let motionKit = MotionKit()
-        
-        red = 0.0
-        blue = 0.0
-        green = 0.0
-        
-        xval.keyboardType = UIKeyboardType.NumberPad
-        yval.keyboardType = UIKeyboardType.NumberPad
-        
-        motionKit.getMagnetometerValues(){
+        motionKit.getMagnetometerValues(0.01){
             (x, y, z) in
-            self.xmag = x
-            self.ymag = y
-            print(self.xmag,",", self.ymag)
+            if self.lastPoint == nil || self.lastPoint.x == 0.0 || self.lastPoint.y == 0.0 {
+                print("lastPoint is nil")
+                self.lastPoint = CGPoint(x: x, y: y)
+            }
+            self.currentPoint = CGPoint(x: x, y: y)
+            print("Last:",self.lastPoint)
+            print("Current:",self.currentPoint)
             print(self.drawing)
-            
+        
             //Warn user that magnet is too close!
-            if self.ymag < 0 {
+            if y < 0 {
                 let alertController = UIAlertController(title: "MagnetoPad", message:"Magnet is too close to device!", preferredStyle: UIAlertControllerStyle.Alert)
                 self.presentViewController(alertController, animated: true, completion: nil)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
             }
-            
-            //Initialize the start point
-            if self.lastPoint == nil {
-                let xtemp = self.xmag
-                let ytemp = self.ymag
-                self.lastPoint = CGPoint(x: xtemp, y: ytemp)
+            if self.drawing {
+                self.drawBetweenPoints(self.lastPoint, endPoint: self.currentPoint)
             }
-            
-            let point1 = CGPoint(x: self.xmag, y: self.ymag)
-            self.drawBetweenPoints(self.lastPoint, end: point1)
-            self.lastPoint = point1
-            
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        gatherMagnetometerValues()
     }
 }
